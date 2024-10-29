@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="logo.png">
+    <title>lendshot - Real Estate Photography</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Danfo&display=swap');
+        * {
+            background-color: black;
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        html {
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+
+        h1, h3 {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: whitesmoke;
+        }
+
+        h3 {
+            color: lightseagreen;
+        }
+
+        section {
+            height: 100vh;
+            scroll-snap-align: start;
+            scroll-snap-stop: always;
+        }
+
+        .leftSection {
+            margin: 100px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: xx-large;
+        }
+
+        .gallery {
+            --size: 100px;
+            display: grid;
+            grid-template-columns: repeat(6, var(--size));
+            grid-auto-rows: var(--size);
+            margin-bottom: var(--size);
+            place-items: start center;
+            gap: 5px;
+            position: absolute;
+            top: 25%;
+            right: 100px;
+            
+            &:has(:hover) img:not(:hover),
+            &:has(:focus) img:not(:focus){
+                filter: brightness(0.5) contrast(0.5);
+            }
+
+            & img {
+                object-fit: cover;
+                width: calc(var(--size) * 2);
+                height: calc(var(--size) * 2);
+                clip-path: path("M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z");
+                transition: clip-path 0.25s, filter 0.75s;
+                grid-column: auto / span 2;
+                border-radius: 5px;
+
+                &:nth-child(5n - 1) { 
+                grid-column: 2 / span 2 
+                }
+
+                &:hover,
+                &:focus {
+                clip-path: path("M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z");
+                z-index: 1;
+                transition: clip-path 0.25s, filter 0.25s;
+                }
+                
+                &:focus {
+                outline: 1px dashed black;
+                outline-offset: -5px;
+                }
+            }
+        }
+
+        a { background:none; border:none; color: white; font-size: xx-large; padding: 10px; text-decoration: none; }
+        a:hover { 
+            color: lightseagreen;
+        }
+        header { 
+            width:100%;
+            display: flex;
+            justify-content: center; 
+        }
+
+        a.email {
+            position: relative;
+            top: 50%;
+        }
+        #contactPage {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="frontPage">
+        <header>
+            <a href="#contactPage">contact</a>
+        </header>
+        <div class="leftSection">
+            <h1 class="companyName">lendshot</h1>
+            <h3 class="companySlogan">real estate photography & videography</h3>
+        </div>
+        <article class="gallery">
+            <img src="photos/photo.png" alt="real estate photo" />
+            <img src="photos/photo1.png" alt="real estate photo" />
+            <img src="photos/photo2.png" alt="real estate photo" />
+            <img src="photos/photo3.png" alt="real estate photo" />
+            <img src="photos/photo4.png" alt="real estate photo" />
+            <img src="photos/photo5.png" alt="real estate photo" />
+            <img src="photos/photo6.png" alt="real estate photo" />
+            <img src="photos/photo7.png" alt="real estate photo" />
+            <img src="photos/photo8.png" alt="real estate photo" />
+            <img src="photos/photo9.png" alt="real estate photo" />
+        </article>
+    </section>
+    <section href="contactPage" id="contactPage">
+        <a href= "mailto: martynas@lendshot.com" class="email">martynas@lendshot.com</a>
+    </section>
+</body>
+</html>
